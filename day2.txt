@@ -1,0 +1,12 @@
+
+switch:
+
+1.create java program with funciton using switch with return type,
+pront color for given character Ex: r-Red , g- Green
+
+2.find max,min, Second highest, second lowest values of given array of integers.
+
+3.Find sum and average of array of integers.
+
+4.sort array of integers in both ascending and descending order.
+   
