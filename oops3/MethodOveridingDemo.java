@@ -21,7 +21,7 @@ public class MethodOveridingDemo {
 
 	public static void main(String[] args) {
 		Ride r=new Ride();
-		r.sq(5);
+		r.sq(5); //dynamic binding, late binding
 		//MRide m=new MRide();
 		//m.sq(5);
 		//m.show();
