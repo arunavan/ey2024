@@ -1,0 +1,131 @@
+				OOP Excercise Inheritance
+
+Java Project : java-oop-project1
+
+In  com.ey.model package,
+
+Create a class Person with following data members
+	Long adharCard,  
+	String  name,  
+	LocalDate  birthdate, 
+	String address, 
+	String email , 
+	Long mobile
+
+	Note: use wrapper class types rather than primitive types
+
+	All the persons stay in a colony named, "Sapient Colony", declare 
+	a static data member named, colonyName
+	
+	provide default constructor
+	provide 1-arg constructor that receives adharCard number 
+        provide all-arg constructor	
+	provide getter and setter methods for all the data members
+	provide String representation of the class
+
+	
+In com.ey.service package,
+  	Create a class Validator with following instance methods
+
+	package com.ey.service;
+
+import java.time.LocalDate;
+
+/**
+ * 
+ * @author Admin
+ * This is Validator class that validates the Person details.
+ * This type of validation is called Server side validation
+ */
+public class Validator{
+
+	/**
+	 * 
+	 * @param adharCard receives adhar card number, returns true if it is valid number,
+	 * a 12-digit number is valid else returns false
+	 * @return
+	 */
+	public Boolean isValidAdhhar(Long adharCard){
+			
+	}
+
+	/**
+	 * 
+	 * @param name receives person name
+	 * @return return true if name contains alphabets, dots and spaces (optional) else
+	 * returns false
+	 * 
+	 */
+	public Boolean isValidName(String name) {
+		
+	}
+
+	/**
+	 * 
+	 * @param localDate receives person's birthdate
+	 * @return returns true if birthdate is less that current date else 
+	 * returns false
+	 */
+	public Boolean isValidBirthdate(LocalDate localDate) {		
+		
+	}
+
+	/**
+	 * 
+	 * @param email receives email
+	 * @return return true if the email id is valid else returns false
+	 * 
+	 */
+	public Boolean isValidEmail(String email) {
+		
+	}
+
+	/**
+	 * 
+	 * @param mobile receives mobile number
+	 * @return return true if it 10-digit number and the mobile number begins with 6 or 7 or 8 or 9
+	 * else returns false
+	 */
+	public Boolean isValidMobile(Long mobile) {
+
+	}
+
+
+}
+
+In com.ey.model package, create classes Employee and Student which are 
+sub classes of Person. 
+The class Employee has additional properties: empno, job,sal,deptno and hiredate.
+
+The class Student has additional properties: grade( primary/secondary/high school/college) and
+hobbies
+
+
+In  com.ey.ui package, Create Tester class, PersonInheritanceDemo
+	Declare an array of type Person as shown below in main() method
+		Person persons[] = new Person[NE];
+		  Note: input NE from user
+
+		write the following instance methods, 
+		    public  void getPersonsDetails(persons) 
+			- which accepts both Employees and Students details
+
+		 
+		    public  void showPersonsDetails(persons) 
+			- which displays Employees and Students details
+
+		 
+		    public  List<Person> getPersonsEligibleForVoting(persons) 
+			- which returns persons whose age is greater or equal to 18 years
+
+
+		
+		    public  Map<String,List<Person>> getPersonsWorkingInSapient(persons) 
+			- which returns key:value, where key is job name, and value is List of Employees
+			 with the job specified in the key.
+			
+			 
+	
+
+
+
