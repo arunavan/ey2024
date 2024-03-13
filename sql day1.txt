@@ -400,3 +400,161 @@ mysql> desc emp;
 | email | varchar(20) | YES  |     | NULL    |       |
 | did   | int         | YES  |     | NULL    |       |
 +-------+-------------+------+-----+---------+-------+
+
+
+update:
+=========
+ | eyuser123 | SE          |
+|   106 | eyuser106 | NULL        |
+|   107 | NULL      | FSE         |
+|   108 | eyuser106 | NULL        |
+|   109 | ey109     | SE          |
+|   110 | ey110     | SE          |
++-------+-----------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> update eyemployee set name='EYUSER103' where empid=103;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from eyemployee;
++-------+-----------+-------------+
+| empid | name      | designation |
++-------+-----------+-------------+
+|   101 | ram       | SE          |
+|   102 | arun      | FSE         |
+|   103 | EYUSER103 | FSE         |
+|   104 | balaji    | NULL        |
+|   105 | eyuser123 | SE          |
+|   106 | eyuser106 | NULL        |
+|   107 | NULL      | FSE         |
+|   108 | eyuser106 | NULL        |
+|   109 | ey109     | SE          |
+|   110 | ey110     | SE          |
++-------+-----------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> update eyemployee set designation='DevopsEng' where empid=104 || empid=106 || empid=108;
+Query OK, 3 rows affected, 2 warnings (0.06 sec)
+Rows matched: 3  Changed: 3  Warnings: 2
+
+mysql> select * from eyemployee;
++-------+-----------+-------------+
+| empid | name      | designation |
++-------+-----------+-------------+
+|   101 | ram       | SE          |
+|   102 | arun      | FSE         |
+|   103 | EYUSER103 | FSE         |
+|   104 | balaji    | DevopsEng   |
+|   105 | eyuser123 | SE          |
+|   106 | eyuser106 | DevopsEng   |
+|   107 | NULL      | FSE         |
+|   108 | eyuser106 | DevopsEng   |
+|   109 | ey109     | SE          |
+|   110 | ey110     | SE          |
++-------+-----------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> update eyemployee set name='EYUSER107',designation='QA' where empid=107;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from eyemployee;
++-------+-----------+-------------+
+| empid | name      | designation |
++-------+-----------+-------------+
+|   101 | ram       | SE          |
+|   102 | arun      | FSE         |
+|   103 | EYUSER103 | FSE         |
+|   104 | balaji    | DevopsEng   |
+|   105 | eyuser123 | SE          |
+|   106 | eyuser106 | DevopsEng   |
+|   107 | EYUSER107 | QA          |
+|   108 | eyuser106 | DevopsEng   |
+|   109 | ey109     | SE          |
+|   110 | ey110     | SE          |
++-------+-----------+-------------+
+
+
+
+10 rows in set (0.00 sec)
+
+
+Delete:
+=======================
+mysql> select * from eyemployee;
++-------+-----------+-------------+
+| empid | name      | designation |
++-------+-----------+-------------+
+|   101 | ram       | SE          |
+|   102 | arun      | FSE         |
+|   103 | EYUSER103 | FSE         |
+|   104 | balaji    | DevopsEng   |
+|   105 | eyuser123 | SE          |
+|   106 | eyuser106 | DevopsEng   |
+|   107 | EYUSER107 | QA          |
+|   108 | eyuser106 | DevopsEng   |
+|   109 | ey109     | SE          |
++-------+-----------+-------------+
+9 rows in set (0.00 sec)
+
+mysql> delete from eyemployee designation='SE';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '='SE'' at line 1
+mysql> delete from eyemployee where  designation='SE';
+Query OK, 3 rows affected (0.03 sec)
+
+mysql> select * from eyemployee;
++-------+-----------+-------------+
+| empid | name      | designation |
++-------+-----------+-------------+
+|   102 | arun      | FSE         |
+|   103 | EYUSER103 | FSE         |
+|   104 | balaji    | DevopsEng   |
+|   106 | eyuser106 | DevopsEng   |
+|   107 | EYUSER107 | QA          |
+|   108 | eyuser106 | DevopsEng   |
++-------+-----------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> delete from eyemployee;
+Query OK, 6 rows affected (0.09 sec)
+
+mysql> select * from eyemployee;
+Empty set (0.00 sec)
+
+
+show databases;
+use ey;
+show tables;
+select * from emp;
+update emp set contact='9898989898' where eid>103;
+select eid,name from emp;
+select name from emp;
+select distinct name as EmployeeName from emp;
+select * from emp order by did desc;
+select did,did+50,did*10 from emp;
+select * from emp where did>20 || did=10;
+select * from emp where not did>20 ;
+select * from emp where not did>20 ;
+
+select * from emp where did<30 and name='ram3';
+select name,lower(name),upper(name),concat(name,email),length(name) from emp;
+
+update emp set did=10,sal=6653 where eid=105;
+update emp set sal=8765 where eid>103;
+select * from emp;
+select count(sal) from emp;
+select sum(sal) from emp;
+select did,sum(sal) from emp group by did;
+select avg(sal) from emp;
+select did,avg(sal) from emp group by did;
+select max(sal) from emp;
+select did,max(sal) from emp group by did;
+select min(sal) from emp;
+select did,min(sal) from emp group by did;
+select did,count(sal) from emp group by did;
+select * from emp where contact is not null;
+select * from emp where name like '%3';
+select * from emp where sal between 3000 and 7000;
+select * from emp where name not  like 'ram_';
+select * from emp where did in(30,10,40);
