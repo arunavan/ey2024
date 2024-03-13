@@ -1,0 +1,190 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> create database ey;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| ey                 |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use ey;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> insert into eyemployee values(105,'eyuser123','SE');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into eyemployee(empid,name) values(106,'eyuser106');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into eyemployee(empid,designation) values(107,'FSE');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into eyemployees values(108,'eyuser106',null),(109,'ey109''SE'),(110,'ey110','SE');
+ERROR 1146 (42S02): Table 'ey.eyemployees' doesn't exist
+
+
+DDL:
+========================
+mysql> drop table eyemployee1;
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> show tables;
++--------------+
+| Tables_in_ey |
++--------------+
+| dept         |
+| emp          |
+| eyemployee   |
+| eyemployee2  |
++--------------+
+4 rows in set (0.00 sec)
+
+mysql> desc emp;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| eid   | int         | NO   | PRI | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| email | varchar(20) | YES  |     | NULL    |       |
+| did   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table emp add( mobile varchar(10),designation varchar(10),sal int);
+Query OK, 0 rows affected (0.51 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| eid         | int         | NO   | PRI | NULL    |       |
+| name        | varchar(10) | YES  |     | NULL    |       |
+| email       | varchar(20) | YES  |     | NULL    |       |
+| did         | int         | YES  |     | NULL    |       |
+| mobile      | varchar(10) | YES  |     | NULL    |       |
+| designation | varchar(10) | YES  |     | NULL    |       |
+| sal         | int         | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> alter table emp modify(designation varchar(5));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(designation varchar(5))' at line 1
+mysql> alter table emp modify designation varchar(5);
+Query OK, 6 rows affected (0.76 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| eid         | int         | NO   | PRI | NULL    |       |
+| name        | varchar(10) | YES  |     | NULL    |       |
+| email       | varchar(20) | YES  |     | NULL    |       |
+| did         | int         | YES  |     | NULL    |       |
+| mobile      | varchar(10) | YES  |     | NULL    |       |
+| designation | varchar(5)  | YES  |     | NULL    |       |
+| sal         | int         | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> alter table emp drop column designation ;
+Query OK, 0 rows affected (0.24 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table emp rename column mobile to contact ;
+Query OK, 0 rows affected (0.32 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| eid     | int         | NO   | PRI | NULL    |       |
+| name    | varchar(10) | YES  |     | NULL    |       |
+| email   | varchar(20) | YES  |     | NULL    |       |
+| did     | int         | YES  |     | NULL    |       |
+| contact | varchar(10) | YES  |     | NULL    |       |
+| sal     | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> show tables;
++--------------+
+| Tables_in_ey |
++--------------+
+| dept         |
+| emp          |
+| eyemployee   |
+| eyemployee2  |
++--------------+
+4 rows in set (0.00 sec)
+
+mysql> create table emp1 as select * from emp;
+Query OK, 6 rows affected (0.45 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> show tables;
++--------------+
+| Tables_in_ey |
++--------------+
+| dept         |
+| emp          |
+| emp1         |
+| eyemployee   |
+| eyemployee2  |
++--------------+
+5 rows in set (0.00 sec)
+
+mysql> create table emp2 as select eid,name from emp;
+Query OK, 6 rows affected (0.26 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> select * from emp1;
++-----+------+---------------+------+---------+------+
+| eid | name | email         | did  | contact | sal  |
++-----+------+---------------+------+---------+------+
+| 101 | raj  | raj@gmail.com |   30 | NULL    | NULL |
+| 102 | ram  | ram@gmail.com |   20 | NULL    | NULL |
+| 103 | ram3 | ram@gmail.com |   20 | NULL    | NULL |
+| 104 | ram3 | ram@gmail.com |   10 | NULL    | NULL |
+| 105 | ram3 | ram@gmail.com | NULL | NULL    | NULL |
+| 106 | ram6 | ram@gmail.com |   40 | NULL    | NULL |
++-----+------+---------------+------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> truncate emp1;
+Query OK, 0 rows affected (0.99 sec)
+
+mysql> select * from emp1;
+Empty set (0.00 sec)
+
+mysql> insert into eyemployee values(108,'eyuser106',null),(109,'ey109''SE'),(110,'ey110','SE');
+ERROR 1136 (21S01): Column count doesn't match value count at row 2
+mysql> insert into eyemployee values(108,'eyuser106',null),(109,'ey109','SE'),(110,'ey110','SE');
+Query OK, 3 rows affected (0.06 sec)
+Records: 3  Duplicates: 0  Warnings: 0
