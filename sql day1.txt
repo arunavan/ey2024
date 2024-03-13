@@ -188,3 +188,215 @@ ERROR 1136 (21S01): Column count doesn't match value count at row 2
 mysql> insert into eyemployee values(108,'eyuser106',null),(109,'ey109','SE'),(110,'ey110','SE');
 Query OK, 3 rows affected (0.06 sec)
 Records: 3  Duplicates: 0  Warnings: 0
+
+
+constraints:
+======================
+
+
+mysql> use ey;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql>
+mysql> create table eyemployee(empid int primary key,name varchar(20), designation varchar(10));
+Query OK, 0 rows affected (0.20 sec)
+
+mysql> desc eyemployee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| empid       | int         | NO   | PRI | NULL    |       |
+| name        | varchar(20) | YES  |     | NULL    |       |
+| designation | varchar(10) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into eyemployee values(101,'ram','SE');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into eyemployee values(102,'arun','FSE');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into eyemployee values(102,'kiran','FSE');
+ERROR 1062 (23000): Duplicate entry '102' for key 'eyemployee.PRIMARY'
+mysql> insert into eyemployee values(103,null,'FSE');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into eyemployee values(104,'balaji',null);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into eyemployee values(null,'sribalaji',null);
+ERROR 1048 (23000): Column 'empid' cannot be null
+mysql> select * from eyemployee;
++-------+--------+-------------+
+| empid | name   | designation |
++-------+--------+-------------+
+|   101 | ram    | SE          |
+|   102 | arun   | FSE         |
+|   103 | NULL   | FSE         |
+|   104 | balaji | NULL        |
++-------+--------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> create table eyemployee1(empid int primary key,name varchar(20) not null, designation varchar(10)not null, mobile varchar(10) unique);
+Query OK, 0 rows affected (0.19 sec)
+
+mysql> insert into eyemployee1 values(101,'sribalaji','SE','9898989898');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into eyemployee1 values(102,null,'SE','1898989898');
+ERROR 1048 (23000): Column 'name' cannot be null
+mysql> insert into eyemployee1 values(102,'eyuser1','SE','1898989898');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into eyemployee1 values(103,'eyuser12,null,'2898989898');
+    '> insert into eyemployee1 values(103,'eyuser12,null,'2898989898');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2898989898');
+insert into eyemployee1 values(103,'eyuser12,null,'2898989898')' at line 1
+mysql> insert into eyemployee1 values(103,'eyuser12',null,'2898989898');
+ERROR 1048 (23000): Column 'designation' cannot be null
+mysql> insert into eyemployee1 values(103,'eyuser12','SSE','2898989898');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into eyemployee1 values(104,'eyuser13','SSE','2898989898');
+ERROR 1062 (23000): Duplicate entry '2898989898' for key 'eyemployee1.mobile'
+mysql> create table eyemployee2(empid int primary key,name varchar(20) not null,sal int check sal>=10000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sal>=10000)' at line 1
+mysql> create table eyemployee2(empid int primary key,name varchar(20) not null,sal int check (sal>=10000));
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> insert into eyemployee2 values(1,'raj',20000);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into eyemployee2 values(2,'raj2',2000);
+ERROR 3819 (HY000): Check constraint 'eyemployee2_chk_1' is violated.
+mysql> create table dept (did int primary key,dname varchar(10));
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> insert into dept(10,'it');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '10,'it')' at line 1
+mysql> insert into dept values (10,'it');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into dept values (20,'admin');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into dept values (30,'infra');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from dept;
++-----+-------+
+| did | dname |
++-----+-------+
+|  10 | it    |
+|  20 | admin |
+|  30 | infra |
++-----+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table emp( eid int primary key,name varchar(10),email varchar(20),did int references dept(did));
+Query OK, 0 rows affected (0.40 sec)
+
+mysql> insert into emp values(101,'raj','raj@gmail.com',30);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into emp values(102,'ram','ram@gmail.com',20);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into emp values(103,'ram3','ram@gmail.com',20);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into emp values(104,'ram3','ram@gmail.com',10);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into emp values(104,'ram3','ram@gmail.com',null);
+ERROR 1062 (23000): Duplicate entry '104' for key 'emp.PRIMARY'
+mysql> insert into emp values(105,'ram3','ram@gmail.com',null);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from dept;
++-----+-------+
+| did | dname |
++-----+-------+
+|  10 | it    |
+|  20 | admin |
+|  30 | infra |
++-----+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-----+------+---------------+------+
+| eid | name | email         | did  |
++-----+------+---------------+------+
+| 101 | raj  | raj@gmail.com |   30 |
+| 102 | ram  | ram@gmail.com |   20 |
+| 103 | ram3 | ram@gmail.com |   20 |
+| 104 | ram3 | ram@gmail.com |   10 |
+| 105 | ram3 | ram@gmail.com | NULL |
++-----+------+---------------+------+
+5 rows in set (0.00 sec)
+
+mysql> insert into emp values(106,'ram6','ram@gmail.com',40);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from emp;
++-----+------+---------------+------+
+| eid | name | email         | did  |
++-----+------+---------------+------+
+| 101 | raj  | raj@gmail.com |   30 |
+| 102 | ram  | ram@gmail.com |   20 |
+| 103 | ram3 | ram@gmail.com |   20 |
+| 104 | ram3 | ram@gmail.com |   10 |
+| 105 | ram3 | ram@gmail.com | NULL |
+| 106 | ram6 | ram@gmail.com |   40 |
++-----+------+---------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from dept;
++-----+-------+
+| did | dname |
++-----+-------+
+|  10 | it    |
+|  20 | admin |
+|  30 | infra |
++-----+-------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> show tables;
++--------------+
+| Tables_in_ey |
++--------------+
+| dept         |
+| emp          |
+| eyemployee   |
+| eyemployee1  |
+| eyemployee2  |
++--------------+
+5 rows in set (0.00 sec)
+
+mysql> drop table eyemployee1;
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> show tables;
++--------------+
+| Tables_in_ey |
++--------------+
+| dept         |
+| emp          |
+| eyemployee   |
+| eyemployee2  |
++--------------+
+4 rows in set (0.00 sec)
+
+mysql> desc emp;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| eid   | int         | NO   | PRI | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| email | varchar(20) | YES  |     | NULL    |       |
+| did   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
