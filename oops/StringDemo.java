@@ -6,69 +6,56 @@ package com.ey.oops;
 public class StringDemo {
 
 	public static void main(String[] args) {
-	
-		String s=new String("java");  //literal ,1 ,heap, scp
-		System.out.println(s.hashCode());
-		String ss1=new String("java");
-		System.out.println(ss1.hashCode());
-		
-		String s1=new String("Java Language"); //object, 2  , 1 heap, 1 in to scp
-		String s2=new String("Java Language");
-		String s3=s1;
-		System.out.println(s1.hashCode());
-		System.out.println(s3.hashCode());
-		System.out.println(s2.matches("ava"));
-		System.out.println(s1==s3); //address
-		System.out.println(s1.equals(s2));//content
-		
-		System.out.println(s1.hashCode()+"  "+s2.hashCode());
-		
-		
-		System.out.println(s.length());
-		System.out.println(s.toUpperCase());
-		System.out.println(s1.toLowerCase());
-		System.out.println(s.startsWith("j"));
-		System.out.println(s.endsWith("a"));
-		System.out.println(s1.indexOf("v"));
-		System.out.println(s1.lastIndexOf("a"));
-		System.out.println(s1.concat(" & Technology"));
-		System.out.println(s1.replace("a", "e"));
-		
-		char ss[]=s.toCharArray();
-		System.out.println(s1.substring(4));
-		System.out.println(s1.substring(4,7));
-		System.out.println(s.concat(" lanugae"));
-		System.out.println(s);
-		//immutable, create duplcate objects for many of string methods
-		
-		
-		//mutable, cpacity, ensurecapacity,append,insert,delete,reverse
-		//never create duplicate objects, threadsafe(synchronized)
-		//slow, locking n unlocking 
-		StringBuffer sb=new StringBuffer("java language");
-		System.out.println(sb.length());
-		System.out.println(sb.insert(3, "technology"));
-		System.out.println(sb);
-		System.out.println(sb.delete(3, 10));
-		System.out.println(sb);
-		System.out.println(sb.append("india"));
-		System.out.println(sb.capacity());
-		sb.ensureCapacity(100);		
-		System.out.println(sb.capacity());
-		System.out.println(sb.reverse());
-		
-		//not syncronized, fast
-		StringBuilder sb1=new StringBuilder("java");
-		
-		String st1="java";
-		StringBuffer stb1=new StringBuffer(st1); // string - stringbuffer
-		
-		StringBuilder stb2=new StringBuilder(st1);
-		
-		String st3=stb1.toString();
-		String st4=stb2.toString();
-		
 
+		String s=new String("javalanguage"); //object, 2 objects ,1 heap, 1 cached scp
+		
+		String s1="java";  //literal
+		
+		System.out.println(s.concat(" technology"));//duplicate
+		System.out.println(s); //immutable
+		System.out.println(s.toUpperCase()); //one more object
+		System.out.println(s);//immutable
+		System.out.println(s.charAt(2));
+		System.out.println(s.length());
+		System.out.println(s.substring(5,8));
+		s.replace('e', 'a');
+		// so many duplicate , memory leakage
+		System.out.println(s1.indexOf('v'));
+		System.out.println(s1.concat("lanugage"));
+		System.out.println(s1);
+		
+		//mutable, will not duplicate , insert,delete,append, reverse
+		StringBuffer sb=new StringBuffer("java programming language");
+		System.out.println(sb.toString().concat("tehcnology"));
+		//insert, append, reverse(),delete
+		System.out.println(sb.insert(4, "xxxxxxxx"));
+		System.out.println(sb);
+		System.out.println(sb.delete(4,9));
+		System.out.println(sb);
+		sb.append("yyyyy");
+		System.out.println(sb);
+		System.out.println(sb.reverse());
+		System.out.println(sb.capacity());
+		sb.ensureCapacity(200);
+		System.out.println(sb.capacity());
+		// syncronized ,slow compare with string
+		//mutable, not syncronized, fast
+		StringBuilder sb1=new StringBuilder("java language");
+		
+		System.out.println(sb1.toString());
+		System.out.println(sb.toString());
+		
+		String x1="java";
+		String x2="java123";
+		System.out.println(x1.hashCode()+  " "+x2.hashCode());
+		System.out.println(x1.equals(x2)); //content 
+		System.out.println(x1==x2); //adress
+		
+		String email="abcd@gmail.com";
+		System.out.println(email.matches("abcd@gmail.com"));
+		
+		
+		
 	}
 
 }
