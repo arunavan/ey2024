@@ -15,11 +15,16 @@ public class ExceptionDemo2 {
 			System.out.println(x[7]);
 			
 		}
-		catch (Exception e) {
+			
+			
+		catch (ArrayIndexOutOfBoundsException | ArithmeticException | NullPointerException e) {
 			//System.out.println(e);
 		//	System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
+		catch(Exception e) {
+				
+			}
 		finally {
 			//db.close()  ; f.close();
 		}

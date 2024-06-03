@@ -6,7 +6,8 @@ import java.io.FileReader;
 class A{
 	
 	void show()throws InterruptedException,FileNotFoundException  {
-		
+		Thread.sleep(1500);
+		FileReader f=new FileReader("d:\\demo.java");
 	}
 }
 
