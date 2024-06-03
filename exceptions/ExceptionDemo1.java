@@ -20,8 +20,6 @@ public class ExceptionDemo1 {
 			}
 			int x[]= {4,5,6};
 			System.out.println(x[7]);
-			
-			
 		}
 		catch (ArrayIndexOutOfBoundsException e) {
 			try {

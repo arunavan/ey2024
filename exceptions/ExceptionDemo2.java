@@ -1,10 +1,10 @@
 package com.ey.exceptions;
 
-
+import java.io.FileNotFoundException;
 
 public class ExceptionDemo2 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  throws InterruptedException,FileNotFoundException{
 			try {
 			//db, file,socket
 			int a=10;
@@ -24,6 +24,8 @@ public class ExceptionDemo2 {
 			//db.close()  ; f.close();
 		}
 		
+			ExceptionDemo3 ed3=new ExceptionDemo3();
+			ed3.show();
 		System.out.println("Demo...");
 
 	}
