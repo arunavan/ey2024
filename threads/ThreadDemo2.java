@@ -2,10 +2,12 @@ package com.ey.threads;
 class TT1 implements Runnable{
 	public void run() {
 		try {
+			//wait();
 			for(int i=1;i<=5;i++) {
 			System.out.println(Thread.currentThread().getName());
 			Thread.sleep(1000);  
 			}
+			//notify();   //java.lang.Object   ,JVM,synhcronized 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
