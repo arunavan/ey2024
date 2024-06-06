@@ -4,17 +4,21 @@ import java.util.Optional;
 public class OptionalDemo {
 		public static void main(String args[]){
 
-		Integer value1 =10;
+		Integer value1 =null;
 		Integer value2 =new Integer(10);
 				
 	//	System.out.println(value1+10);
 		//Optional.ofNullable - allows passed parameter to be null.
-		Optional<Integer> a =Optional.ofNullable(value1);
+		Optional<Integer> a =Optional.ofNullable(null);
 		System.out.println(a); //overcome , avoid nullpointer exception
 				
 		//Optional.of - throws NullPointerException if passed parameter is null
 		Optional<Integer> b =Optional.of(value2);
 		System.out.println(sum(a,b));
+		Optional<Integer> x=Optional.ofNullable(null);
+		System.out.println(x.isPresent());
+		int y=x.orElse(0);
+		System.out.println(20+y);
 		}
 			
 		static public Integer sum(Optional<Integer> a,Optional<Integer> b){
