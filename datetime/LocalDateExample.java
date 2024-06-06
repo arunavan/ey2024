@@ -4,31 +4,23 @@ import java.time.Month;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.TreeSet;
-
-
 public class LocalDateExample {
-
 	public static void main(String[] args) {
 		 TreeSet<String> sortedZones = new TreeSet<>(ZoneId.getAvailableZoneIds());
-
 	        System.out.println("Number of zones: " + sortedZones.size());
 	        System.out.println("");
-
 	        for (String zone : sortedZones) {
 	        System.out.println(zone);
 	       }
 		/*
 		//Date d=new Date();
-		
 		//Current Date
 		LocalDate today = LocalDate.now();
 		System.out.println("Current Date="+today);
-		
 		//Creating LocalDate by providing input arguments
 		LocalDate firstDay_2014 = LocalDate.of(2024, Month.FEBRUARY, 29);
 		System.out.println("Specific Date="+firstDay_2014);
-		
-		
+	
 		//Try creating date by providing invalid inputs
 		//LocalDate feb29_2014 = LocalDate.of(2014, Month.FEBRUARY, 29);
 		//Exception in thread "main" java.time.DateTimeException: 
