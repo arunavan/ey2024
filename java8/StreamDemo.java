@@ -1,5 +1,6 @@
 package com.ey.java8;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,6 +13,7 @@ class Course{
 	Integer id;
 	String name;
 	Double fee;
+	LocalDate examDate;
 	public Course(Integer id, String name, Double fee) {
 		super();
 		this.id = id;
