@@ -1,0 +1,16 @@
+show databases;
+create database training;  # creation of databse
+use training;    #open database
+# DDL
+create table course (cid int(2) primary key ,title varchar(20) not null ,email varchar(10),mobile varchar(10) unique,duration int(2) check( duration <6));
+desc course;
+insert into course values(101,'java','agmail.com','9887766554',5);
+
+insert into course values(102,'java','vgmail.com','2887766554',5);
+insert into course values(103,'java123','vgmail.com','2687766554',5);
+insert into course values(104,'oracle123','vgmail.com','2687666554',5);
+insert into course values(105,'spring',null,'2647766554',5);
+insert into course values(106,'spring',null,'1647766554',4);
+
+
+select * from course;
