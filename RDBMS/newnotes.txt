@@ -1,0 +1,82 @@
+show databases;
+create database training;  # creation of databse
+use training;    #open database
+
+# DDL  - create, altre , drop, truncate 
+
+create table course (cid int(2) primary key ,title varchar(20) not null ,email varchar(10),mobile varchar(10) unique,duration int(2) check( duration <6));
+desc course;
+insert into course values(101,'java','agmail.com','9887766554',5);
+
+insert into course values(102,'java','vgmail.com','2887766554',5);
+insert into course values(103,'java123','vgmail.com','2687766554',5);
+insert into course values(104,'oracle123','vgmail.com','2687666554',5);
+insert into course values(105,'spring',null,'2647766554',5);
+insert into course values(106,'spring',null,'1647766554',4);
+
+
+
+select * from course;
+
+#creatig table from existing table
+create table course2 as select * from course;
+# to remove all records
+truncate table course1;
+select * from course;
+
+delete from course2 where title='spring';
+select * from course;
+create table course3 as select * from course;
+drop table course3;
+describe course;
+alter table course add fee int;
+alter table course add( year int, month int);
+alter table course modify  year varchar(4);
+alter table course drop column month;
+alter table course rename column  year to years;
+
+
+#DML - insert, delete, update
+
+desc course;
+insert into course values(108,'oracle','Gmail.com','198989898',4,999,1),
+(109,'oracle','Gmail.com','289898989',4,999,1),
+(110,'oracle','Gmail.com','3989898988',4,999,1),
+(111,'oracle','Gmail.com','489898989',4,999,1),
+(112,'oracle','Gmail.com','589898989',4,999,1);
+
+select * from course;
+insert into course values (113,'php',null,null,3,null,null);
+insert into course (cid,title,duration) values (114,'webservices',2);
+
+update course set email='ey.com' where cid=113 or cid=114;
+update course set fee=1000 , years=2 where cid>=113;
+update course set duration=5;
+update course set fee=999 ,years=2;
+set autocommit=false;
+delete from course where cid=107;
+
+
+#TCL   savepoint rollback commit
+select * from course;
+delete from course where cid=106;
+savepoint a;
+delete from course where cid=108;
+savepoint b;
+delete from course where cid=110;
+savepoint c;
+delete from course where cid=114;
+savepoint d;
+rollback to d;
+commit;
+//Normalization
+//ERD example 
+
+create table order1(oid int primary key, odate date,amount int );
+insert into order1 values (1,'24/06/06',1999),(2,'24/06/10',2999);
+select * from order1;
+create table customer1(id int primary key, name varchar(10),oid int references order1(oid));
+insert into customer1 values (101,'raj',2),(103,'ram',1);
+select * from customer1;
+select c.id,c.name,o.oid,o.odate,o.amount  from customer1 c,order1 o where c.oid=o.oid  order by c.id;
+
