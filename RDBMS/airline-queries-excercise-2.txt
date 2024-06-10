@@ -1,0 +1,68 @@
+1. Write a query to display the number of tickets as "No_of_Tickets" booked by Kochi Customers. 
+The Query should display the Profile_Id, First_Name, Base_Location and number of tickets booked. 
+ 
+Hint: Use String functions to get the base location of customer from their Address and give alias name as “Base_Location” 
+Display the records sorted in ascending order based on customer first name. 
+
+2. Write a query to display the flight_id, from_location, to_location, number of Services as "No_of_Services" offered in the month of May.  
+Hint:The number of services can be calculated from the number of scheduled departure dates of the flight 
+ Display the records sorted in ascending order based on flight id. 
+
+3. Write a query to display profile id,last name,mobile number and email id of passengers whose base location is chennai. 
+Display the records sorted in ascending order based on profile id.
+
+4. Write a query to display number of flights between 6.00 AM and 6.00 PM from chennai. Hint Use FLIGHT_COUNT as alias name.
+
+5. Write a query to display unique profile id,first name , email id and contact number of passenger(s) who travelled on flight with id 3148. Display the records sorted in ascending order based on first name. 
+
+6. Write a query to display the flights available in Morning, AfterNoon, Evening & Night. The Query should display the Flight_Id, From_Location, To_Location , Departure_Time, time of service as "Time_of_Service".  
+ 
+Time of Service should be calculated as: From 05:00:01 Hrs to 12:00:00 Hrs -  Morning, 12:00:01 to 18:00:00 Hrs -AfterNoon, 18:00:01 to 24:00:00 - Evening and 00:00:01 to 05:00:00 - Night 
+ 
+Display the records sorted in ascending order based on flight id. 
+
+7. Write a query to display flight id,departure date,flight type of all flights. 
+Flight type can be identified based on the following rules : 
+if ticket price is less than 3000 then 'AIR PASSENGER',
+ticket price between 3000 and less than 4000 'AIR BUS' and 
+ticket price between 4000 and greater than 4000 then 'EXECUTIVE PASSENGER'. 
+
+
+Hint use FLIGHT_TYPE as alias name. 
+Display the records sorted in ascendeing order based on flight_id and then by departure date. 
+
+8.Write a query to display the credit card type and no of credit cards used on the same type.  Display the records sorted in ascending order based on credit card type. 
+Hint: Use CARD_COUNT AS Alias name for no of cards
+
+9.Write a Query to display serial no, first name,mobile number,email id of all the passengers 
+who holds email address from gmail.com. 
+The Serial No will be the last three digits of profile ID. 
+Hint: Use SERIAL_NO as Alias name for serial number. 
+Display the records sorted in ascending order based on name. 
+
+10. Write a query to display the flight(s) which has least number of services in the month of May. The Query should fetch flight_id, from_location, to_location, least number of Services as "No_of_Services" 
+Hint: Number of services offered can be calculated from the number of scheduled departure dates of a flight. ?If there are multiple flights, display them sorted in ascending order based on flight id.
+
+11. Write a query to display the number of flights flying from each location. The Query should display the from location and the number of flights to other locations as "No_of_Flights".  
+Hint: Get the distinct from location and to location. 
+Display the records sorted in ascending order based on from location. 
+
+12. Write a query to display the number of passengers traveled in each flight in each scheduled date. The Query should display flight_id,from_location,To_location, flight_departure_date and the number of passengers as "No_of_Passengers".  
+ 
+Hint: The Number of passengers inclusive of all the tickets booked with single profile id. 
+Display the records sorted in ascending order based on flight id and then by flight departure date. 
+
+13. Write a query to display the flight details in which more than 10% of seats have been booked. The query should display Flight_Id, From_Location, To_Location,Total_Seats, seats booked as "No_of_Seats_Booked" . 
+Display the records sorted in ascending order based on flight id and then by No_of_Seats_Booked.
+
+14. Write a query to display the Flight_Id, Flight_Departure_Date, From_Location,To_Location and Duration 
+of all flights which has duration of travel less than 1 Hour, 10 Minutes
+
+15. Write a query to display the flight_id, from_location,to_location,number of services as "No_of_Services" , average ticket price as "Average_Price" whose average ticket price is greater than the total average ticket cost of  all flights. Order the result by lowest average price. 
+
+
+
+
+
+
+
