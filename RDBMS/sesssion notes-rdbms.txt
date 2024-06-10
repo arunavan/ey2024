@@ -14,3 +14,21 @@ insert into course values(106,'spring',null,'1647766554',4);
 
 
 select * from course;
+
+# to remove all records
+truncate table course1;
+select * from course;
+select * from course2;
+delete from course2 where title='spring';
+delete from course2;
+rollback;
+
+select * from course;
+create table course3 as select * from course;
+drop table course3;
+describe course;
+alter table course add fee int;
+alter table course add( year int, month int);
+alter table course modify  year varchar(4);
+alter table course drop column month;
+alter table course rename column  year to years;
