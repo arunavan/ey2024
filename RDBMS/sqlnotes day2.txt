@@ -1,0 +1,85 @@
+create database capstoneproject;
+CREATE  TABLE air_flight  
+(   
+flight_id VARCHAR(10) PRIMARY KEY ,   
+airline_id VARCHAR(10)  ,   
+airline_name VARCHAR(30)  ,   
+from_location VARCHAR(20) ,   
+to_location VARCHAR(20)  ,   
+departure_time TIME  ,   
+arrival_time TIME  ,   
+duration TIME  ,   
+total_seats  INT  
+); 
+insert into air_flight 
+values
+('820' , '100000' ,'INDIGO AIRLINES' , 'Coimbutur', 'HYDERABAD' ,'19:55:00', '21:00:00', '01:05:00', 20);
+insert into air_flight 
+values
+('818' , '100000' ,'BBC AIRLINES' , 'Coimbutur', 'HYDERABAD' ,'19:55:00', '21:00:00', '01:05:00', 70);
+insert into air_flight 
+values
+('830' , '100000' ,'CBC AIRLINES' , 'Coimbutur', 'HYDERABAD' ,'19:55:00', '21:00:00', '01:05:00', 30);
+insert into air_flight 
+values
+('831' , '100000' ,'INDIGO AIRLINES' , 'Coimbutur', 'HYDERABAD' ,'19:55:00', '21:00:00', '01:05:00', 40);
+insert into air_flight 
+values
+('832' , '100000' ,'BBC AIRLINES' , 'Coimbutur', 'HYDERABAD' ,'19:55:00', '21:00:00', '01:05:00', 40);
+insert into air_flight 
+values
+('833' , '100000' ,'CBC AIRLINES' , 'Coimbutur', 'HYDERABAD' ,'19:55:00', '21:00:00', '01:05:00', 40);
+
+
+insert into air_flight 
+values
+('916' , '100000' ,'ABC AIRLINES' , 'CHENNAI', 'HYDERABAD' ,'19:55:00', '21:00:00', '01:05:00', 40), 
+('289', '100000' ,'ABC AIRLINES' ,'CHENNAI' ,'KOCHI' ,'08:40:00' ,'09:55:00', '01:15:00', 80), 
+('1011','100000', 'ABC AIRLINES' ,'HYDERABAD' ,'CHENNAI' ,'12:30:00', '13:55:00', '01:25:00', 50), 
+('3004','100000', 'ABC AIRLINES', 'BENGALURU' ,'CHENNAI', '09:05:00', '10:25:00' ,'01:20:00', 100), 
+('3307','100000', 'ABC AIRLINES', 'BENGALURU', 'CHENNAI' ,'18:45:00' ,'19:45:00', '01:00:00' ,40), 
+('3013','100000' ,'ABC AIRLINES', 'CHENNAI', 'BENGALURU', '07:40:00' ,'08:45:00', '01:05:00' ,50), 
+('3148','100000' ,'ABC AIRLINES','CHENNAI','BENGALURU','20:15:00' , '21:20:00', '01:05:00' ,100), 
+('1265','100000', 'ABC AIRLINES', 'CHENNAI','HYDERABAD','21:25:00' ,'22:55:00', '01:30:00', 100), 
+('3241','100000', 'ABC AIRLINES', 'CHENNAI' , 'KOCHI' ,'10:40:00', '12:05:00', '01:25:00', 80), 
+( '3244' ,'100000' ,'ABC AIRLINES' ,'KOCHI' ,'CHENNAI' ,'21:10:00', '22:40:00', '01:30:00' ,50), 
+('1262','100000' ,'ABC AIRLINES' ,'HYDERABAD' ,'CHENNAI' ,'06:00:00' ,'07:20:00' ,'01:20:00', 100); 
+
+select * from air_flight;
+show tables;
+select flight_id,total_seats from air_flight;
+select flight_id ID ,total_seats NumberofSeats  from air_flight;
+select concat(flight_id  ,total_seats) ID  from air_flight;
+select flight_id,total_seats+50,total_seats/10 from air_flight;
+select flight_id,total_seats from air_flight order by total_seats desc ;
+select * from air_flight order by from_location desc;
+select * from air_flight order by from_location,total_seats desc;
+select * from air_flight where  from_location ='CHENNAI';
+select * from air_flight where not  from_location ='CHENNAI';
+select * from air_flight where  total_seats<90;
+# arith, relation, logical, special- like, in , between and 
+select * from air_flight where   (from_location ='CHENNAI' or total_seats>90);
+select * from air_flight where    from_location in ('CHENNAI','KOCHI','HYDERABAD');
+select * from air_flight where    from_location like 'C%';
+select * from air_flight where    airline_name like '_BC AIRLINES';
+select * from air_flight where    airline_name not like 'I%';
+select * from air_flight where  total_seats>=50 and total_seats<=80;
+select * from air_flight where  total_seats between 50 and 80;
+select flight_id ID , from_location STARTCITY ,total_seats NumberofSeats  from air_flight;
+select distinct from_location from air_flight;
+select  from_location from air_flight;
+select from_location,length(from_location), lower(from_location),substr(from_location,3,8) from air_flight;
+select sum(total_seats) from air_flight;
+select avg(total_seats) from air_flight;
+select max(total_seats) from air_flight;
+select min(total_seats) from air_flight;
+select count(total_seats) from air_flight;
+select airline_name,sum(total_seats) from air_flight group by airline_name;
+select airline_name,sum(total_seats) from air_flight group by airline_name;
+select airline_name,avg(total_seats) from air_flight group by airline_name;
+select airline_name,max(total_seats) from air_flight group by airline_name;
+select airline_name,min(total_seats) from air_flight group by airline_name;
+select airline_name,count(total_seats) from air_flight group by airline_name;
+select airline_name,count(total_seats) from air_flight group by airline_name;
+select airline_name,from_location,count(total_seats) from air_flight group by airline_name,from_location;
+select airline_name,sum(total_seats) from air_flight group by airline_name having not airline_name='BBC AIRLINES';
