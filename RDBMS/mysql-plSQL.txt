@@ -1,0 +1,91 @@
+#sub programs PL/SQL
+
+DELIMITER $$
+CREATE PROCEDURE deletestudents(IN name1 varchar(20))
+BEGIN
+	delete from student where name=name1;
+END $$
+DELIMITER $$
+
+CALL deletestudents('ram');
+
+
+select * from student;
+
+CREATE PROCEDURE getcandidateskillandname(IN candidate_id INT,IN name varchar(10) )
+BEGIN
+	SELECT id, first_name,last_name, skill  
+	FROM candidates  WHERE id = candidate_id and first_name=name;
+    
+    END $$
+DELIMITER ;
+
+CALL  getcandidateskillandname(3,'anjan');
+
+select * from college1 where cid=5;
+
+
+#index creation 
+create index idindex on college1(cid);
+create index nameindex on college1(cname);
+#faster access
+select * from college1 where cid=6;
+select * from college1 where cname='Satyabhama';
+select * from student;
+create index studentcompositeindex on student(sid,name);
+select * from student where sid=3 or name='ravi'; 
+select cname from college1 where cid=3;
+alter table student drop index studentcompositeindex;
+
+
+#nested query
+select * from college1 where  cname !=(select cname from college1 where cid=3);
+
+#View
+create view collegeidview  as select cid from college where cid<50;
+#virtual table 
+select * from collegeidview;
+drop view collegeidview;
+
+create table college(cid int primary key, cname varchar(20));
+
+insert into college values(1,'SRM'),(2,'Amrutha'),(3,'Satyabhama');
+
+create table college1 as select * from college;
+
+insert into college1 values(5,'Srivenkateshwara'),(6,'Tirumala');
+#union    - unique
+#union all  -duplictes
+#intersection
+select * from college1 minus  select * from college;
+
+
+function:
+
+
+DELIMITER $$
+CREATE FUNCTION sum123(a int, b int ) returns int
+BEGIN
+		return a+b;
+END $$
+DELIMITER ;
+
+select sum123(45,56);
+
+
+DELIMITER $$
+
+CREATE FUNCTION getsumsal1() returns int
+BEGIN
+	declare sum int;
+		select sum(sal) into sum from employee ;
+		return sum;
+END $$
+
+DELIMITER ;
+
+select getsumsal1();
+
+IF error with function creation
+
+=>SET GLOBAL log_bin_trust_function_creators = 1;
