@@ -1,0 +1,12 @@
+<?xml version="1.0"?>  
+<!DOCTYPE author [  
+  <!ELEMENT a (#PCDATA)> 
+  <!ELEMENT price (#PCDATA)> 
+  <!ELEMENT name (#PCDATA)>
+  <!ENTITY sj "Sonoo Jaiswal">  
+]> 
+<author>
+<a>&sj;abc</a>  
+<price>100</price>
+<name>&sj;</name>
+</author>
