@@ -1,0 +1,14 @@
+Write a query to display flight id,departure date,flight type of all flights. Flight type can be identified based on the following rules : if ticket price is less than 3000 then 'AIR PASSENGER',ticket price between 3000 and less than 4000 'AIR BUS' and ticket price between 4000 and greater than 4000 then 'EXECUTIVE PASSENGER'. 
+
+Hint use FLIGHT_TYPE as alias name.
+ 
+Display the records sorted in ascendeing order based on flight_id and then by departure date. 
+
+Solution:
+select flight_id,flight_departure_date, 
+case when price<3000 then 'AIR PASSENGER' 
+ when price>=3000 and price<=4000 then 'AIR BUS' 
+ when price>4000 then 'EXECUTIVE PASSENGER' 
+end as FLIGHT_TYPE 
+from air_flight_details 
+order by flight_id,flight_departure_date; 

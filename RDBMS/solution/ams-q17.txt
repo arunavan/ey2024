@@ -1,0 +1,11 @@
+Write a query to display the flight_id, from_location, to_location, number of Services as "No_of_Services" offered in the month of May.  
+Hint:The number of services can be calculated from the number of scheduled departure dates of the flight 
+Display the records sorted in ascending order based on flight id.  
+
+Solution:
+select af.flight_id,af.from_location,af.to_location,count(afd.flight_departure_date) 
+as No_of_Services 
+from air_flight af join air_flight_details afd 
+on af.flight_id=afd.flight_id 
+where month(afd.flight_departure_date)='05'  
+group by flight_id order by flight_id; 

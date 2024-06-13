@@ -1,0 +1,17 @@
+Write a query to display the flight(s) which has least number of services in the month of May. The Query should fetch flight_id, from_location, to_location, least number of Services as "No_of_Services" 
+Hint: Number of services offered can be calculated from the number of scheduled departure dates of a flight. ?If there are multiple flights, display them sorted in ascending order based on flight id. 
+
+Solution:
+
+select af.flight_id,af.from_location,af.to_location,count(afd.flight_departure_date) as 
+No_of_Services 
+from air_flight af join air_flight_details afd on  
+af.flight_id=afd.flight_id 
+where month(afd.flight_departure_date)='05' 
+group by af.flight_id  
+having count(afd.flight_departure_date) 
+<= all (select count(afd.flight_departure_date) from air_flight af join 	air_flight_details afd on  af.flight_id=afd.flight_id 
+	where month(afd.flight_departure_date)='05' 
+	group by af.flight_id) 
+ order by af.flight_id; 
+

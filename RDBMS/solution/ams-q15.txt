@@ -1,0 +1,14 @@
+Write a query to intimate the passengers who are boarding Chennai to Hyderabad Flight on 6th May 2013 stating the delay of 1hr in the departure time. The Query should display the passenger’s profile_id, first_name,last_name, flight_id, flight_departure_date,  actual departure time , actual arrival time , delayed departure time as "Delayed_Departure_Time", delayed arrival time as "Delayed_Arrival_Time" 
+Hint: Distinct  Profile ID should be displayed irrespective of multiple tickets booked by the same profile. 
+Display the records sorted in ascending order based on passenger's profile id. 
+
+Solution:
+
+select distinct app.profile_id,app.first_name,app.last_name,ati.flight_id,ati.flight_departure_date, 
+af.departure_time,af.arrival_time, ADDTIME(af.departure_time,'1:00:00') as Delayed_Departure_Time,  
+ADDTIME(af.arrival_time,'1:00:00') as Delayed_Arrival_Time 
+from air_passenger_profile app 
+join air_ticket_info ati on app.profile_id=ati.profile_id join air_flight af on 
+ati.flight_id=af.flight_id 
+where ati.flight_departure_date='2013-05-06' 
+order by app.profile_id; 

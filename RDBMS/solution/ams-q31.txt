@@ -1,0 +1,10 @@
+Write a query to display the flight_id, from_location,to_location,number of services as "No_of_Services" , average ticket price as "Average_Price" whose average ticket price is greater than the total average ticket cost of  all flights. Order the result by lowest average price. 
+
+Solution:
+select af.flight_id,af.from_location,af.to_location,
+count(afd.flight_departure_date) as No_of_Services, avg(afd.price) as Average_Price 
+from air_flight af join air_flight_details afd on af.flight_id=afd.flight_id 
+group by af.flight_id 
+having avg(afd.price)> (select avg(afd.price) 
+			from air_flight_details afd) 
+order by afd.price; 

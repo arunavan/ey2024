@@ -1,0 +1,20 @@
+5.Write a query to display the number of tickets booked from Chennai to Hyderabad. 
+The Query should display passenger profile_id,first_name,last_name, Flight_Id , Departure_Date 
+and  number of tickets booked as "No_of_Tickets". 
+Display the records sorted in ascending order based on profile id and then by flight id and then by departure date. 
+
+select app.profile_id,app.first_name,app.last_name, ati.Flight_Id , ati.flight_Departure_Date,count(ati.ticket_id) as "No_of_Tickets"
+from air_passenger_profile app JOIN air_ticket_info ati on app.profile_id=ati.profile_id
+JOIN air_flight af on af.flight_id=ati.flight_id
+where af.from_location='CHENNAI' and af.to_location='HYDERABAD'
+group by app.profile_id 
+order by app.profile_id,ati.Flight_Id,ati.flight_Departure_Date;
+
+			OR
+select ati.profile_id,app.first_name,app.last_name,ati.flight_id,ati.flight_departure_date,
+count(ati.ticket_id) as No_of_Tickets 
+from air_ticket_info ati join air_passenger_profile app on ati.profile_id= 
+app.profile_id join air_flight af on ati.flight_id=af.flight_id 
+where af.from_location='chennai' and af.to_location='hyderabad' 
+group by ati.profile_id, ati.flight_id,ati.flight_departure_date 
+order by ati.profile_id,ati.flight_id,ati.flight_departure_date; 

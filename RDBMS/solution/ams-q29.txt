@@ -1,0 +1,11 @@
+Write a query to display the flight details in which more than 10% of seats have been booked. The query should display Flight_Id, From_Location, To_Location,Total_Seats, seats booked as "No_of_Seats_Booked" . 
+Display the records sorted in ascending order based on flight id and then by No_of_Seats_Booked.
+
+Solution:
+select af.flight_id,af.from_location,af.to_location,af.total_seats,
+(af.total_seats-afd.available_seats) as No_of_Seats_Booked 
+from air_flight af join air_flight_details afd on af.flight_id= 
+afd.flight_id 
+where (af.total_seats-afd.available_seats)>(af.total_seats*0.1) 
+group by flight_id 
+order by flight_id,No_of_Seats_Booked; 

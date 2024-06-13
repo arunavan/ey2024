@@ -1,0 +1,7 @@
+Write a query to display the number of flights flying from each location. The Query should display the from location and the number of flights to other locations as "No_of_Flights".  
+Hint: Get the distinct from location and to location. 
+Display the records sorted in ascending order based on from location. 
+
+Solution:
+select distinct from_location,count(to_location) as No_of_Flights from 
+air_flight  group by from_location order by from_location

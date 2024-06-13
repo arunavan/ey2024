@@ -1,0 +1,16 @@
+Write a query to display the customers who have booked tickets from Chennai to Hyderabad. The query should display profile_id, customer_name (combine first_name & last_name with space in b/w), address of the customer. 
+ 
+Give an alias to the name as customer_name. 
+
+Hint: Query should fetch unique customers irrespective of multiple tickets booked. 
+Display the records sorted in ascending order based on profile id.
+
+
+Solution:
+select app.profile_id, concat(app.first_name,' ',app.last_name) as customer_name,app.address 
+from air_passenger_profile app join air_ticket_info ati on app.profile_id=ati.profile_id 
+join air_flight af on ati.flight_id=af.flight_id 
+where af.from_location='chennai' and af.to_location='hyderabad' 
+group by app.profile_id 
+order by app.profile_id; 
+

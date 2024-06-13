@@ -1,0 +1,10 @@
+Write a query to display profile id,last name,mobile number and email id of passengers whose base location is chennai.
+
+Display the records sorted in ascending order based on profile id.
+
+Solution:
+
+select profile_id,last_name,mobile_number,email_id 
+from air_passenger_profile where 
+substring_index(substring_index(address,',',-1),'-',1)='chennai' 
+order by profile_id; 

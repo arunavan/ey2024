@@ -1,0 +1,9 @@
+Write a query to display the total number of tickets as "No_of_Tickets" booked in each flight in ABC Airlines. The Query should display the flight_id, from_location, to_location and the number of tickets. 
+Display only the flights in which atleast 1 ticket is booked. 
+Display the records sorted in ascending order based on flight id
+
+Solution:
+select af.flight_id,af.from_location,af.to_location,count(ati.ticket_id) as No_of_Tickets from air_flight af join air_ticket_info ati on af.flight_id=ati.flight_id  
+group by af.flight_id 
+having count(ati.ticket_id) >= 1; 
+ 

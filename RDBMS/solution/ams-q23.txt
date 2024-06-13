@@ -1,0 +1,8 @@
+Write a query to display the credit card type and no of credit cards used on the same type.  Display the records sorted in ascending order based on credit card type. 
+Hint: Use CARD_COUNT AS Alias name for no of cards.
+
+Solution:
+SELECT CARD_TYPE,count(card_type) CARD_COUNT 
+FROM air_credit_card_details 
+group by CARD_TYPE 
+order by CARD_TYPE; 

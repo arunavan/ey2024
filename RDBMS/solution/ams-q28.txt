@@ -1,0 +1,12 @@
+Write a query to display the number of passengers traveled in each flight in each scheduled date. The Query should display flight_id,from_location,To_location, flight_departure_date and the number of passengers as "No_of_Passengers".  
+Hint: The Number of passengers inclusive of all the tickets booked with 
+single profile id. 
+Display the records sorted in ascending order based on flight id and then by flight departure date. 
+
+Solution:
+
+select af.flight_id,af.from_location,af.to_location,ati.flight_departure_date,
+count(ati.ticket_id) as No_of_Passengers 
+from air_flight af join air_ticket_info ati on af.flight_id=ati.flight_id 
+group by af.flight_id,ati.flight_departure_date 
+order by af.flight_id,ati.flight_departure_date; 

@@ -1,0 +1,9 @@
+Write a query to display the number of passengers who have travelled in each flight in each scheduled date. The Query should display flight_id, flight_departure_date and the number of passengers as "No_of_Passengers" in the same order. 
+Display the records sorted in ascending order based on flight id and then by flight departure date
+
+Solution:
+
+SELECT flight_id, flight_departure_date,COUNT(ticket_id) AS No_of_Passengers 
+FROM   air_ticket_info  
+GROUP BY flight_id,flight_departure_date 
+ORDER BY flight_id, flight_departure_date;

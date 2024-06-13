@@ -1,0 +1,8 @@
+Write a query to display unique profile id,first name , email id and contact number of passenger(s) who travelled on flight with id 3148. Display the records sorted in ascending order based on first name.
+
+Solution:
+select distinct app.profile_id,app.first_name,app.email_id,app.mobile_number 
+from air_passenger_profile app join air_ticket_info ati on app.profile_id=ati.profile_id 
+where ati.flight_id= 3148 
+group by app.first_name 
+order by app.first_name; 

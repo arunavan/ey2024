@@ -1,0 +1,8 @@
+Write a query to display the Flight_Id, Flight_Departure_Date, From_Location,To_Location and Duration of all flights which has duration of travel less than 1 Hour, 10 Minutes.
+
+Solution:
+select af.flight_id,afd.flight_departure_date,af.from_location,af.to_location,af.duration 
+from air_flight af join air_flight_details afd on af.flight_id=afd.flight_id 
+where duration<'1:10:00' 
+group by af.flight_id,afd.flight_departure_date  
+order by af.flight_id,afd.flight_departure_date; 

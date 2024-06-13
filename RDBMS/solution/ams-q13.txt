@@ -1,0 +1,10 @@
+Write a query to display profile id of passenger(s) who booked minimum number of tickets. 
+In case of multiple records, display the records sorted in ascending order based on profile id. 
+
+Solution:
+select profile_id 
+from air_ticket_info 
+group by profile_id 
+having count(profile_id) <= all (select count(profile_id) 
+				from air_ticket_info group by profile_id) 
+order by profile_id; 

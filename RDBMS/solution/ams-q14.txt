@@ -1,0 +1,9 @@
+Write a query to display unique passenger profile id,first name,mobile number and email address of passengers who booked ticket to travel from HYDERABAD to CHENNAI. 
+Display the records sorted in ascending order based on profile id.
+
+
+Solution:
+select distinct ati.profile_id,app.first_name,app.mobile_number,app.email_id  
+from air_ticket_info ati join air_passenger_profile app on ati.profile_id=app.profile_id join air_flight af on ati.flight_id=af.flight_id 
+where af.from_location='hyderabad' and af.to_location='chennai' 
+order by profile_id; 

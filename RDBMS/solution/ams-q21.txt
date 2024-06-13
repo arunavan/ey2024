@@ -1,0 +1,16 @@
+Write a query to display the flights available in Morning, AfterNoon, Evening & Night. The Query should display the Flight_Id, From_Location, To_Location , Departure_Time, time of service as "Time_of_Service".  
+ 
+Time of Service should be calculated as: From 05:00:01 Hrs to 12:00:00 Hrs -  Morning, 12:00:01 to 18:00:00 Hrs -AfterNoon, 18:00:01 to 24:00:00 - Evening and 00:00:01 to 05:00:00 - Night 
+ 
+Display the records sorted in ascending order based on flight id. 
+
+
+Solution:
+select flight_id,from_location,to_location,departure_time, 
+case 
+when departure_time between '05:00:01' and '12:00:00' then 'Morning' 
+when departure_time between '12:00:01' and '18:00:00' then 'Afternoon' 
+when departure_time between '18:00:01' and '24:00:00' then 'Evening' 
+when departure_time between '00:00:01' and '05:00:00' then 'Night' 
+end as Time_of_Service 
+from air_flight order by flight_id; 

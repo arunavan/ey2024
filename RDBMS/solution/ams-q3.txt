@@ -1,0 +1,10 @@
+3.Write a query to display the number of flight services between locations in a month. The Query should display From_Location, To_Location, Month as "Month_Name" and number of flight services as "No_of_Services".  
+Hint: The Number of Services can be calculated from the number of scheduled departure dates of a flight. 
+The records should be displayed in ascending order based on From_Location and then by To_Location and then by month name.
+
+select af.from_location,af.to_location,monthname(aft.flight_departure_date) as "Month_Name",
+count(aft.flight_departure_date) as "No_of_Services"
+from air_flight af join air_flight_details aft
+on af.flight_id=aft.flight_id
+group by af.from_location,af.to_location,Month_Name
+order by af.from_location,af.to_location,Month_Name;

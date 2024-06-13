@@ -1,0 +1,9 @@
+Write a query to display the average cost of the tickets in each flight on all scheduled dates. The query should display flight_id, from_location, to_location and Average price as "Price". 
+Display the records sorted in ascending order based on flight id and then by from_location and then by to_location.
+
+Solution:
+select af.flight_id,af.from_location,af.to_location,avg(afd.price) 
+from air_flight af join air_flight_details afd 
+on af.flight_id=afd.flight_id 
+group by af.flight_id,af.from_location,af.to_location 
+order by af.flight_id,af.from_location,af.to_location; 

@@ -1,0 +1,17 @@
+Write a query to display the average monthly ticket cost for each flight in ABC  Airlines. 
+The query should display the Flight_Id,From_location,To_Location,Month Name as "Month_Name" and 
+average price as "Average_Price" 
+Display the records sorted in ascending order based on flight id and then by Month Name. 
+
+SELECT 
+    f.flight_id,
+    f.from_location,
+    f.to_location,
+    MONTHNAME(fd.flight_departure_date) AS Month_name,
+    AVG(fd.price) AS Average_price
+FROM
+    air_flight f
+        JOIN
+    air_flight_details fd ON f.flight_id = fd.flight_id
+GROUP BY f.flight_id , Month_name
+ORDER BY f.flight_id , Month_name;

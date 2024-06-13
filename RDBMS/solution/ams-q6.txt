@@ -1,0 +1,8 @@
+Write a query to display flight id,from location, to location and ticket price of flights whose departure is in the month of april.
+
+Solution:
+
+select af.flight_id,af.from_location,af.to_location,afd.price 
+from air_flight af join air_flight_details afd on af.flight_id=afd.flight_id 
+where monthname(afd.flight_departure_date)='april' 
+order by flight_id,from_location; 

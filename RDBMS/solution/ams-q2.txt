@@ -1,0 +1,18 @@
+2. Write a query to display the customer(s) who has/have booked least number of tickets in ABC Airlines. The Query should display profile_id, customer’s first_name, Address and Number of tickets booked as "No_of_Tickets" 
+Display the records sorted in ascending order based on customer's first name. 
+
+Solution :
+SELECT 
+    apf.profile_id, apf.first_name, apf.address,COUNT(ati.ticket_id) AS No_of_Tickets
+FROM
+    air_passenger_profile apf	
+    JOIN
+    air_ticket_info ati ON apf.profile_id = ati.profile_id
+GROUP BY apf.profile_id
+HAVING COUNT(ati.ticket_id) <= ALL (SELECT COUNT(ati.ticket_id)
+    				   FROM  air_passenger_profile apf
+            			   JOIN  air_ticket_info ati 
+				   ON apf.profile_id = ati.profile_id
+    				   GROUP BY apf.profile_id)
+ORDER BY first_name; 
+

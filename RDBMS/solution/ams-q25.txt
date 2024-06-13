@@ -1,0 +1,10 @@
+Write a Query to display serial no, first name,mobile number,email id of all the passengers who holds email address from gmail.com. 
+The Serial No will be the last three digits of profile ID. 
+Hint: Use SERIAL_NO as Alias name for serial number. 
+Display the records sorted in ascending order based on name. 
+
+Solution:
+select substring(profile_id,4) as SERIAL_NO,first_name,mobile_number,email_id  
+from air_passenger_profile 
+where email_id like '%gmail.com' 
+order by first_name; 

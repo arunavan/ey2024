@@ -1,0 +1,9 @@
+Write a query to display the number of tickets as "No_of_Tickets" booked by Kochi Customers. The Query should display the Profile_Id, First_Name, Base_Location and number of tickets booked
+
+Solution:
+
+select ap.profile_id,ap.first_name,count(at.ticket_id) as  No_of_Tickets 
+from air_passenger_profile ap join air_ticket_info at on at.profile_id=ap.profile_id 
+where ap.address like '%KOCHI%'
+group by ap.profile_id 
+order by first_name;  

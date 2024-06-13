@@ -1,0 +1,13 @@
+Write a query to display the no of services offered by each flight and the total price of the services. The Query should display flight_id, number of services as "No_of_Services" and the cost as "Total_Price" in the same order.  
+ 
+Order the result by Total Price in descending order and then by flight_id in descending order. 
+ 
+Hint:The number of services can be calculated from the number of scheduled departure dates of the flight.
+
+Solution:
+
+select af.flight_id, count(afd.flight_departure_date) as No_of_Services, 
+sum(afd.price) as Total_Price 
+from air_flight af join air_flight_details afd on af.flight_id=afd.flight_id  
+group by flight_id 
+order by total_price desc,flight_id desc; 

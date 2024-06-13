@@ -1,0 +1,6 @@
+Write a query to display number of flights between 6.00 AM and 6.00 PM from chennai. Hint Use FLIGHT_COUNT as alias name.
+
+Solution:
+select count(flight_id) as FLIGHT_COUNT 
+from air_flight 
+where departure_time between '6:00:00' and '18:00:00' and from_location='chennai';
