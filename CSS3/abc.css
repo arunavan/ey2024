@@ -1,0 +1,18 @@
+p#x {
+    color: yellow;
+    }
+p#y {
+    color: green;
+    }
+
+h2#r {
+    color:red;
+   }
+h2#p {
+    color:pink;
+   }
+
+h2.b {
+    color:cyan;
+   }
+

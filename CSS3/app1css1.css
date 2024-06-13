@@ -1,0 +1,10 @@
+h2 {
+ color:green
+
+}
+body {
+  background-color: #ffffff;
+  background-image: url("Tulips.jpg");
+  background-repeat: no-repeat;
+  background-position: right top;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script language="javascript">
+     window.document.writeln("Welcome to js");
+     alert("Welcome")
+     var name="Revature USer";
+     document.writeln(name);
+function display(name) {
+document.writeln(name);
+}
+var x, y ; //declaring the variable
+    x = 6; y =6; // assigning values
+document.writeln(x==y);
+document.writeln(x===y);
+  //  var name = 'John';
+function big(a,b) {
+    if(a>b)
+    return a;
+    else 
+    return b;
+}
+
+function demofor(n){
+    for(i=1;i<=n;i++)
+    document.writeln(i);
+}
+
+
+let person= {
+    id:'101',
+    name:'Ram'
+}
+
+for (let p in person) {
+  document.writeln(person[p]); // prints 'Bob' and then 25
+}
+
+   </script>
+</head>
+<body>
+<script>
+   display("Rev User123");
+ document.writeln("<br>Biggest is :"+big(7,8));
+ demofor(10);
+</script>
+</body>
+</html>
