@@ -1,0 +1,41 @@
+<html>
+<script language="javascript">
+
+let user = {
+  name: "John",
+  age: 30,
+  isAdmin: true
+};
+
+for(let key in user) {
+ 
+  alert( key +"    "+ user[key] );
+}
+
+let admin=user;
+
+alert(admin.name);
+admin.name="SRI";
+
+alert(admin.name+"  "+user.name);
+
+
+const user1= {
+ name:"Raj1",
+ mobile:"9887766554"
+
+}
+alert(user1.name);
+
+user1={
+name="Raj2"
+}
+
+alert(user1.name);
+
+
+</script>
+<body>
+Welcome to UI 
+</body>
+</html>

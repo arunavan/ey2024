@@ -1,0 +1,36 @@
+<html>
+<script language="javascript">
+
+let user = {
+  name: "John",
+  age: 30,
+  sayHi : function() {
+        alert('Hi All');
+    },
+  hello: function(){
+    this.sayHi();
+    alert('hello');
+     
+}
+};
+
+let target = {}; 
+
+//let emp=user;
+
+for (let key in user) {
+  target[key] = user[key];
+}
+
+target.name = "Peter"; 
+
+alert( user.name +"  "+target.name); 
+
+alert( user.age +"  "+target.age);
+user.hello();
+
+</script>
+<body>
+Welcome to UI 
+</body>
+</html>

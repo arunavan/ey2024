@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+function meaningOfLife() 
+{
+    log("The meaning of life is: 42");
+}
+
+// A method which accepts a callback method as an argument
+// takes a function reference to be executed when printANumber completes
+
+function pNumber(number,callbackFunction) {
+    alert("The number you provided is: " + number);
+meaningOfLife();
+}
+
+
+   pNumber(6, meaningOfLife);
+
+
+
+
+</script>
+</head>
+
+</html>

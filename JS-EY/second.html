@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>"
+    <script >
+        var age=90;//number
+        var name="ram";//string
+        var cars = ["Saab", "Volvo", "BMW"];
+        for(var a=0;a<cars.length;a++) {
+                document.writeln(cars[a] +" <br>");
+            }
+        var person = {
+            firstName:"John", 
+            lastName:"Doe", 
+            age:50, 
+            eyeColor:"blue"
+        };
+        document.writeln(person.firstName+" <br>");
+        document.writeln(person.lastName+" <br>");
+        document.writeln(person.age+" <br>");
+        document.writeln(person.eyeColor+" <br>");
+        document.writeln(person["firstName"]+" <br>");
+        document.writeln(person["lastName"]+" <br>");
+        document.writeln(person["age"]+" <br>");
+        document.writeln(person["eyeColor"]+" <br>");
+        // js function
+        //var,let,const
+        function sum(a,b) {
+            let x=90;
+            const pi=3.142;
+             document.writeln(parseInt(a)+parseInt(b));
+             if(a>b)
+                 document.writeln("a is big");
+                 else
+                 document.writeln("b is big");
+        }
+        /*
+   */
+        function dispnumbers() {
+            for(var a=1;a<=10;a++) {
+                document.writeln(a);
+            }
+        }
+    </script>
+<body>
+      <script>
+             sum(150,270);
+             dispnumbers()
+      </script>
+
+</body>
+
+
+</html>

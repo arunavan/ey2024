@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function mySandwich(param1, param2, callback) {
+    alert('Started eating my sandwich.\n\nIt has: ' + param1 + ', ' + param2);
+    callback(); //callig callback 
+}
+//calling
+mySandwich('ham', 'cheese', function() {
+    alert('Finished eating my sandwich.');
+}
+
+);
+</script>
+</head>
+
+</html>
