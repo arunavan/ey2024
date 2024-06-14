@@ -1,0 +1,23 @@
+<html>
+<head>
+    <script>
+           function validate(){
+            var n=document.f.name.value;
+            if(n.length<5)
+            alert("name should be minimum 5 chars");
+        else
+        alert( "validation success");
+           }
+
+    </script>
+</head>
+
+<body>
+    <form name="f">
+
+        <input type="text" name="name"/>
+        <input type="submit" onClick="validate()"/>
+    </form>
+</body>
+
+</html>
