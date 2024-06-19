@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<bean id="a" class="com.ey.SpringMavenApp.Account" scope="singleton" init-method="start" destroy-method="stop">
+   <constructor-arg index="0" value="101"/>
+   <constructor-arg index="1" value="SAvings"/>
+</bean>
+<bean id="c" class="com.ey.SpringMavenApp.Customer" scope="prototype" init-method="start" destroy-method="stop">
+<property name="id" value="102"/>
+<property name="name" value="Ram"/>
+
+</bean>
+<bean id="order" class="com.ey.SpringMavenApp.Order">
+<property name="orderId" value="102"/>
+<property name="orderAmount" value="900.00"/>
+
+</bean>
+
+</beans>
