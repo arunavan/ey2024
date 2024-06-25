@@ -1,0 +1,47 @@
+/*  Class Component*/
+/*
+import React,{ Component } from "react";
+import Signup from "./Signup";
+class App  extends Component{
+  render(){
+    return ( 
+     <div>
+          <h1> Parent- Root Component </h1>
+          <h1>   EY Technologies </h1>
+          <br></br>
+          <div>
+                <div><Signin/> </div>
+                <Signup/>
+          </div>
+          
+      </div>
+    );
+  }
+}
+export default App;
+
+class Signin extends Component{
+render(){
+  return(
+
+       <div> singin Component </div>
+  );
+}
+
+}
+
+
+//should in seperate file Signup.js
+
+
+import React,{ Component } from "react";
+class Signup extends Component{
+    render(){
+    return(
+         <div>
+             <h1> singn up component </h1>
+         </div>
+        );
+          }
+}
+export default Signup;
