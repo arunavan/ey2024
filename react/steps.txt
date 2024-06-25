@@ -1,0 +1,18 @@
+node --version
+
+npm --version
+
+npm install -g create-react-app  -> installing create-react-app  
+npm install  create-react-app
+
+npx create-react-app eyreactapp1  -> to create ne react application
+
+cd eyreactapp1 -> switch to ne wly created application
+
+>npm start -> to run react application
+
+>npm run build
+
+
+
+
