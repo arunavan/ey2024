@@ -1,0 +1,625 @@
+/*
+
+//import logo from './logo.svg';
+
+
+/*
+
+var App=()=>(  
+  <div>    Learn React with version React18s using arrow function
+  </div>
+)
+export default App;
+
+*/
+/*
+import './App.css';
+import React,{Component} from 'react';
+import Content from './Content';
+//import Department from './Department';
+
+class App extends Component{  //state is class local , props - parent
+  constructor(props) {
+    super(props)
+    this.state = {
+       n: 0//n state 
+
+    }
+    this.inc = this.inc.bind(this)   //register function 
+    this.dec = this.dec.bind(this) 
+ };
+ inc(){
+  this.setState( { n: this.state.n + 1 } )
+ }
+ dec(){
+  this.setState( { n: this.state.n - 1 } )
+ }
+  render(){
+    return (
+            <div className="App">
+           <h2> Lifecycle methods & EventBinding - Class Component</h2>
+          <h2> Couter Application</h2>
+
+          <button onClick = {this.inc}>INCREMENT ++ </button>
+          <button onClick = {this.dec}>Decrement -- </button>
+        
+          <Content myNumber= {this.state.n}/>
+
+
+            <Project/> 
+            <Department/>
+
+            </div>
+            );
+          }
+}
+export default App;
+
+
+*/
+/*
+
+class Project extends Component{ //child 
+  constructor(props){
+    super(props)
+    this.mymethod = this.mymethod.bind(this) 
+  }
+  mymethod(){
+    console.log("child is called")
+  }
+
+  render(){
+    return (
+            <div className="App">
+              <ol>
+             <li>Employee Leave Tracking System</li>
+             <li>Employee attendance Tracking System</li>
+             <li>Employee Calender System</li>
+             </ol>
+             <button onClick= {this.mymethod} >Click here</button>
+            </div>
+            );
+          }
+}
+/*
+export default App;
+*/
+/*
+export default function App() { //root   functional component
+  return (
+    <div className="App">
+      
+          Employee Timesheet Tracking System-ADP....................s
+        {/*  <Project/>
+          <Department/> */
+       
+ //  </div>
+ // );
+//}
+
+/*
+function Project(){
+  return (
+    <div className="App">
+      <ol>
+     <li>Employee Leave Tracking System</li>
+     <li>Employee attendance Tracking System</li>
+     <li>Employee Calender System</li>
+     </ol>
+    </div>
+    );
+}
+*/
+
+
+
+/*
+import { Component } from 'react';
+import './App.css';
+import { Lifecycle } from './Lifecycle';
+//import { Menu } from './Menu'
+//import { Lifecycle } from './Lifecycle'
+ class App extends Component {
+  constructor(props){
+    super(props)
+    console.log("in constructor")
+  }
+  render(){
+    console.log("in render function")
+    return(
+      <div>
+         <div>
+             <h1> Welcome to React Class components </h1>
+         </div>
+         <div>
+      <Menu/>
+         </div>
+         </div>
+    );
+  }
+
+
+}
+export default App;
+
+*/
+
+// react hook
+/*
+import { useState } from "react";
+ function App() {
+  const [name, setName] = useState("ADPGrad");
+  const [email,setEmail]=useState("xxx@adp.com");
+  const changeName = () => {
+    setName("ADPEmployee");
+  };
+  const updateEmail=() => {
+    setEmail("ADPuser@adp.com");
+  }
+  return (
+    <div>
+      <p>My name is {name}</p>
+      <button onClick={changeName}> update name </button>
+      <div>
+          <h1> Email is : { email }</h1>
+          <button onClick={updateEmail} >updateEmail</button>
+          <button onClick={()=> setEmail("NewADP@adp.com")} >updateEmail</button>
+      </div>
+    </div>
+  );
+}
+export default App
+
+*/
+/*
+
+import { useState, useEffect } from "react";
+// create -- perform decrement logic
+function App() {
+  const [count, setCount] = useState(0);
+  useEffect(() => {    console.log(`You have clicked the button ${count} times`)  }
+ ,[count]
+  
+  );   
+  //[],[count]  as second argument  to suppress side effects like life cycle methods
+  return (
+    <div>  
+      <button onClick={() => setCount(count + 1)}> ++ </button> 
+      <button onClick={()=>setCount(count-1)} > --</button>
+      {count }
+      
+    </div>
+  );
+}
+export default App;
+
+*/
+
+/*
+import useFetchData from './useFetchData'
+function App() {  //parent 
+    const { data } = useFetchData("https://api.github.com/users");
+  return (
+      <div>
+          <p> learn react </p>
+          {data && (
+            data.map((user) =>(
+                <div className="text-white" key={user.id}>
+
+                    <p> {user.login} </p>
+
+                    <p> { user.type } </p>
+                    <p> { user.site_admin } </p>
+                    <p> { user.url } </p>
+                    
+                    
+                </div>
+            ))
+          )}
+      </div>
+  )
+}
+export default App;
+*/
+/*
+import  {useState} from 'react';
+function App() {
+    const [input , setInput] = useState({  name: ''  })
+    const inputsHandler = (e) =>{ setInput( {[e.target.name]: e.target.value} )  
+                                }
+    const submitButton = () =>{ 
+      alert(input.name)   
+      if(input.name.length>5)
+       console.log("valid")
+       else
+       console.log("Invalid")
+    }
+    return ( <div>
+        <div>      <input 
+                    type="text" 
+                    name="name" 
+                    onChange={inputsHandler} 
+                    placeholder="Name" 
+                    value={input.name}/>
+                    <br/>
+                  <button onClick={submitButton}>Submit Now</button>
+        </div>
+        <br></br>
+        <div>Name given by you : {input.name}</div>
+        </div>
+    )
+}
+export default App;
+
+*/
+
+
+
+
+
+//form example
+/*
+import React, {useState} from 'react';
+function App() {  //state
+const [inputField , setInputField] = useState({
+    first_name: '',
+    last_name: '',
+    gmail: ''
+})
+const inputsHandler = (e) =>{
+    const { name, value } = e.target;
+   setInputField((prevState) => ({...prevState,[name]: value,}));
+}
+const submitButton = () =>{
+    alert(inputField.first_name+ " "+inputField.last_name+" "+inputField.gmail)
+    console.log(inputField.first_name+ " "+inputField.last_name+" "+inputField.gmail)
+}
+ return (
+     <div>
+      <h1 > React inline css</h1>  
+         <input 
+        type="text" 
+        name="first_name" 
+        onChange={inputsHandler} 
+        placeholder="First Name" 
+        value={inputField.first_name}/>
+       <br/>
+        <input 
+        type="text" 
+        name="last_name" 
+        onChange={inputsHandler} 
+        placeholder="Last Name" 
+        value={inputField.last_name}/>
+        <br/>
+        <input 
+        type="email" 
+        name="gmail" 
+        onChange={inputsHandler} 
+        placeholder="Gmail" 
+        value={inputField.gmail}/>
+
+        <br/>
+        <button onClick={submitButton}>Submit Now</button>
+        <div>
+        First_Name: {inputField.first_name}
+        LAst_Name : {inputField.last_name}
+        Email id:   {inputField.gmail}
+        </div>
+
+    </div>
+)
+}
+
+export default App;
+*/
+
+/*
+import { useForm } from "react-hook-form"; //npm install react-hook-form
+const App = () => {
+ const { handleSubmit, register, formState: { errors } } = useForm();
+  const onSubmit = values => alert(values.email + " " + values.password);
+ return (
+   <div className="app">
+     <form onSubmit={handleSubmit(onSubmit)}>
+       <h1>Register</h1>
+       <div className="formInput">
+         <label>Email</label>
+         <input
+           type="email"
+           {...register("email", {
+             required: "Email cannot be empty",
+             pattern: {
+               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+               message: "invalid email address"
+             }
+           })}
+         />
+         {errors.email && errors.email.message}
+       </div>
+       <div className="formInput">
+         <label>Password</label>
+         <input
+           type="password"
+           {...register("password", {
+             required: "PAssword cannot be empty",
+             pattern: {
+               value: /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/,
+               message: "Password requirements: 8-20 characters, 1 number, 1 letter, 1 symbol."
+             }
+           })}
+         />
+         {errors.password && errors.password.message}
+       </div>
+       <button type="submit">Submit</button>
+     </form>
+   </div>
+ );
+};
+
+
+export default App;
+*/
+
+//child component
+
+/*
+function App() {
+  return (
+    <div className="App">
+          <Header/>
+           Welcome to React training
+           <ADPMessage city='Hyderabad'/>
+     </div>
+  );
+}
+
+// <ADPMessage />
+function ADPMessage({city}) {
+  return <p>  <h1> { city }</h1> </p>
+}
+*/
+/*
+function Header(){
+  return <h1> ADP ,Hyderabad</h1>
+}
+
+
+*/
+
+
+
+
+
+/*
+event handling
+
+const handleClickEvent = (event) => {
+  console.log('button clicked');
+}
+
+function App() {
+  return <button onClick={handleClickEvent}>Click here</button>
+}
+
+*/
+
+
+/*
+const { useEffect, useState } = React
+
+const CounterWithNameAndSideEffect = () => {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    console.log(`You clicked ${count} times`)
+  })
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
+
+*/
+/*
+import React, { useState } from 'react';
+import './App.css';
+import AddUser from './AddUser';
+import UserList from './UserList';
+import { AppContext } from './context';
+
+function App() {
+	const [ users, setUsers ] = useState([]);
+	
+	const dispatchUserEvent = (actionType, payload) => {
+		switch (actionType) {
+			case 'ADD_USER':
+				setUsers([ ...users, payload.newUser ]);
+				return;
+			case 'REMOVE_USER':
+				setUsers(users.filter(user => user.id !== payload.userId));
+				return;
+			default:
+				return;
+		}
+	};
+
+	return (
+		<div className="App">
+			<AppContext.Provider value={{ users, dispatchUserEvent }}>
+				<AddUser />
+				<UserList />
+			</AppContext.Provider>
+		</div>
+	);
+}
+
+export default App;
+*/
+
+
+
+
+/*
+import React from 'react'
+export default class App extends React.Component { //stateful
+
+   
+ render(){
+   return (
+   <div>
+         Learn React with version React18s with class component
+       
+    </div>
+ 
+);
+ }
+}
+
+
+
+*/
+import FunApp1 from './FunApp1'
+
+import React,{useState} from 'react'
+
+function App() {
+  return (
+    <div>
+      
+          Learn React with version React18s
+          <FunApp1 name='ADPUSer123'/>
+          <Tutorial/>
+          <MyComponent/>
+       
+    </div>
+  );
+}
+
+
+/*
+var App=()=>(
+  
+   <div>    Learn React with version React18s using arrow function
+     </div>
+ )
+export default App;
+
+
+
+
+
+
+
+*/
+/*
+import Menu from './Menu';
+import React,{useState} from 'react'
+import Home from './Home'
+import Form from './Form'
+import Clock from './Clock'
+import FunApp1 from './FunApp1'
+class App extends React.Component{
+  render(){
+    return(
+      <div>
+          <h1> Class Component</h1>
+          <Menu city='Hyderabad'/>
+          <Home/>
+          <Form/>
+          <Clock/>
+          <FunApp1 name='ADPUSer123'/>
+          <Tutorial/>
+          <MyComponent/>
+          
+      </div>
+
+    );
+  }
+}
+*/
+export default App;
+
+
+function Course(props) { //props
+   return <h2>Avaiable course is  { props.cname }!</h2>;
+ }
+ 
+ function Tutorial() {
+
+   return (
+     <>
+       <h1>Course available now </h1>
+       <Course cname="JavaFullstack" />
+     </>
+   );
+ }
+ 
+
+
+const MyComponent = (props) => {
+const [value, setValue] = useState(1);  //state
+return (
+<div>
+   <p>{value}</p>
+   <button onClick={() => setValue((value + 1))}>Increment Value</button>
+</div>
+);
+}
+
+
+/*
+class App extends React.Component {
+  constructor(props) {
+     super(props);
+     
+     this.state = {
+        data: 0
+     }
+     this.setNewNumber = this.setNewNumber.bind(this)
+  };
+  setNewNumber() {
+     this.setState({data: this.state.data + 1})
+  }
+  render() {
+     return (
+        <div>
+           <button onClick = {this.setNewNumber}>INCREMENT</button>
+           <Content myNumber = {this.state.data}></Content>
+        </div>
+     );
+  }
+}
+class Content extends React.Component {
+  componentWillMount() {
+     console.log('Component WILL MOUNT!')
+  }
+  componentDidMount() {
+     console.log('Component DID MOUNT!')
+  }
+  componentWillReceiveProps(newProps) {    
+     console.log('Component WILL RECIEVE PROPS!')
+  }
+  shouldComponentUpdate(newProps, newState) {
+     return true;
+  }
+  componentWillUpdate(nextProps, nextState) {
+     console.log('Component WILL UPDATE!');
+  }
+  componentDidUpdate(prevProps, prevState) {
+     console.log('Component DID UPDATE!')
+  }
+  componentWillUnmount() {
+     console.log('Component WILL UNMOUNT!')
+  }
+  render() {
+     return (
+        <div>
+           <h3>{this.props.myNumber}</h3>
+        </div>
+     );
+  }
+}
+*/
