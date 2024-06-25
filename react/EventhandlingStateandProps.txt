@@ -1,0 +1,55 @@
+import React,{ Component} from "react"
+class App extends Component{  //state is class local mutable , props - parent-immutable
+  constructor(props) {
+    super(props)
+    this.state = {
+       n : 100//n state 
+
+    }
+    this.inc = this.inc.bind(this)   //register function 
+    this.dec = this.dec.bind(this) 
+ };
+ inc(){
+  this.setState( { n: this.state.n + 10 } )
+ }
+ dec(){
+  this.setState( { n: this.state.n - 10 } )
+ }
+  render(){
+    return (
+            <div className="App">
+           <h2> Lifecycle methods & EventBinding - Class Component</h2>
+          <h2> Couter Application</h2>
+
+          <button onClick = {this.inc}>INCREMENT ++ </button>
+          <button onClick = {this.dec}>Decrement -- </button>
+           { this.state.n }
+        
+          <Content myVal= { this.state.n }  xVal= { 5  }    yVal={ 89 } />
+
+
+            </div>     
+             );  }
+}
+
+export default App;
+
+class Content extends Component{
+constructor(props) {
+  super(props);
+}
+
+render(){
+  return(
+<div>
+       <h1>  this is from child : Content</h1>
+       {  this.props.myVal+10}
+       {this.props.myVal} -
+       {this.props.xVal} -
+       {this.props.yVal}
+
+</div>
+
+  );
+}
+}
