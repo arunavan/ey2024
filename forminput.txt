@@ -1,0 +1,26 @@
+import  {useState} from 'react';
+function App() {
+    const [input , setInput] = useState({  name: ''  })
+    const inputsHandler = (e) =>{ setInput( {[e.target.name]: e.target.value} )  
+                                }
+    const submitButton = () =>{ 
+      alert(input.name)   
+      if(input.name.length>5)
+       console.log("valid")
+       else
+       console.log("Invalid")
+    }
+    return ( <div>
+        <div>      <input  type="text"  name="name" 
+                    onChange={inputsHandler} 
+                    placeholder="Name" 
+                    value={input.name}/>
+                    <br/>
+                  <button onClick={submitButton}>Submit Now</button>
+        </div>
+        <br></br>
+        <div>Name given by you : {input.name}</div>
+        </div>
+    )
+}
+export default App;
