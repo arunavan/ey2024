@@ -1,0 +1,24 @@
+
+import { useState } from "react";
+ function App() {
+  const [name, setName] = useState("EY Traine");
+  const [email,setEmail]= useState("eyuser@ey.com");
+  const changeName = () => {
+    setName("EY Employee");
+  };
+  const updateEmail=() => {
+    setEmail("eyemployee@ey.com");
+  }
+  return (
+    <div>
+      <p>My name is {name}</p>
+      <button onClick={changeName}> update name </button>
+      <div>
+          <h1> Email is : { email }</h1>
+          <button onClick={updateEmail} >updateEmail</button>
+          <button onClick={()=> setEmail("eyemp@ey.com")} >updateEmail</button>
+      </div>
+    </div>
+  );
+}
+export default App
