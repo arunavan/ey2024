@@ -1,0 +1,54 @@
+
+import React, {useState} from 'react';
+function App() {  //state
+const [inputField , setInputField] = useState({
+    first_name: '',
+    last_name: '',
+    gmail: ''
+})
+const inputsHandler = (e) =>{
+    const { name, value } = e.target;
+   setInputField((prevState) => ({...prevState,[name]: value,}));
+}
+const submitButton = () =>{
+    alert(inputField.first_name+ " "+inputField.last_name+" "+inputField.gmail)
+    console.log(inputField.first_name+ " "+inputField.last_name+" "+inputField.gmail)
+}
+ return (
+     <div>
+      <h1 > React inline css</h1>  
+         <input 
+        type="text" 
+        name="first_name" 
+        onChange={inputsHandler} 
+        placeholder="First Name" 
+        value={inputField.first_name}/>
+       <br/>
+        <input 
+        type="text" 
+        name="last_name" 
+        onChange={inputsHandler} 
+        placeholder="Last Name" 
+        value={inputField.last_name}/>
+        <br/>
+        <input 
+        type="email" 
+        name="gmail" 
+        onChange={inputsHandler} 
+        placeholder="Gmail" 
+        value={inputField.gmail}/>
+
+        <br/>
+        <button onClick={submitButton}>Submit Now</button>
+        <div>
+        First_Name: {inputField.first_name}
+        LAst_Name : {inputField.last_name}
+        Email id:   {inputField.gmail}
+        </div>
+
+    </div>
+)
+}
+
+export default App;
+
