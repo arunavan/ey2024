@@ -1,0 +1,85 @@
+index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { BrowserRouter  } from 'react-router-dom';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+
+
+App.js
+
+import React from 'react';
+import {  Routes,  Route ,Link} from 'react-router-dom';
+import About from './components/About';
+import Home from './components/Home';
+import Contact from './components/Contact';
+//npm install react-router-dom
+export default function App() {
+  return (
+      <div>
+	<nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+        <hr />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact/:id" element={<Contact/>}/> 
+        </Routes>
+      </div>
+  );
+}
+/*http://localhost:3000/contact/EYUser123  */
+
+About.js
+
+import React from 'react';
+const About = () => {
+    return <div>About page</div>;
+  };
+export default About;
+
+Contact.js
+
+import React from 'react'
+import { useParams } from 'react-router-dom';
+const Contact = () => {
+    const routeParams = useParams();
+    // console.log(routeParams);
+    return <div>Hi {routeParams.id}, Here are contact details</div>;
+//return <div> <h1>  contact page </h1></div>
+  };
+export default Contact;
+
+
+Home.js
+
+import React from 'react'
+const Home = () => {
+    return <div>Home</div>;
+  };
+export default Home;
+
+
+
+
+
+
+
+
