@@ -1,0 +1,49 @@
+
+//useFetchDetails.js
+
+import { useState, useEffect} from 'react'
+//child
+function useFetchData(url) { //props given parent 
+    const [data, setData] = useState(null);
+
+    // change detected 
+    useEffect(() => {
+      fetch(url) //axios
+        .then((res) => res.json())
+        .then((data) => setData(data))
+        .catch((err) => console.log(`Error: ${err}`));
+    }, [url]);
+
+    return { data };
+}
+
+export default useFetchData
+
+
+
+
+App.js
+
+
+import useFetchData from './useFetchData'
+function App() {  //parent 
+    const { data } = useFetchData("https://api.github.com/users");
+  return (
+      <div>
+          <p> learn react </p>
+          {data && (
+            data.map((user) =>(
+                <div className="text-white" key={user.id}>
+
+                    <p> {user.login} </p>
+
+                     <p> { user.url } </p>
+                    
+                    
+                </div>
+            ))
+          )}
+      </div>
+  )
+}
+export default App;
