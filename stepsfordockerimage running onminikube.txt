@@ -1,0 +1,15 @@
+kubectl create deployment sb-app1 --image=aruna708/springboot-app
+
+kubectl get deployments
+
+kubectl expose deployment sb-app1 --type=NodePort --port=8087
+
+kubectl get pods
+
+kubectl get node
+
+kubectl get service
+
+kubectl describe services/sb-app1
+
+minikube  service sb-app1 --url
