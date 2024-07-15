@@ -1,0 +1,13 @@
+
+Project need to be implemented in 2 sprint(ajile)
+Each spring 2.5 day
+End of 2.5 days - demo1  
+End of 5 days -final demo2 with presentation
+Daily standup call with team updates.
+
+1. Working product/Project execution
+2. Product backlog
+3. PPT with team details, project problem statement,productbacklog,
+   table structure, wireframes
+4. Screenshots of Postman,React pages,Junit ,Docker image,Jenkins pipeline
+   code coverage
